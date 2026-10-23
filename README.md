@@ -44,12 +44,6 @@ A candidate is used only if `--version` runs and names the right program. A chos
 * `trace.rs` runs one tracer at a time: starting a new trace kills the previous process, so live preview never queues stale work.
 * The frontend is plain TypeScript (`src/`), with no framework.
 
-## Next steps
-
-* Delineate's SVG optimizers (group paths by color, one group, etc.)
-* A longer result history than Current/Previous
-* Bundling potrace and AutoTrace inside the app (Tauri sidecars), signing and notarizing for macOS, Flatpak
-
 ## License and credits
 
 taurineate is free software, released under the GNU General Public License, version 2 or (at your option) any later version. See [LICENSE](LICENSE).
