@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <title>taurineate</title>
+    <script type="module" src="/src/main.ts" defer></script>
+  </head>
+
+  <body>
+    <div class="app">
+      <main class="results-wrap">
+        <div class="errorbar" id="error" role="alert" hidden>
+          <span id="error-text"></span>
+          <button id="error-close" aria-label="Dismiss">✕</button>
+        </div>
+        <div class="results" id="results"></div>
+      </main>
+
+      <div class="splitter vertical" id="vsplit" aria-hidden="true"></div>
+
+      <aside class="side">
+        <nav class="tabs" id="tabs" role="tablist"></nav>
+
+        <div class="engine-panel" id="engine-panel">
+          <div class="engine-missing" id="engine-missing" hidden>
+            <span id="engine-missing-text"></span>
+            <button id="engine-setup">Set up…</button>
+          </div>
+
+          <fieldset class="group">
+            <legend>Conversion settings</legend>
+            <div class="grid">
+              <div class="opt-label-cell" data-help="The image to trace: PNG, JPEG, GIF, BMP, TIFF, WebP or PNM. Shortcut ⌘O, or drop a file on the window.">
+                <button class="label-button" id="pick-input">input file</button>
+              </div>
+              <span class="size" id="input-size"></span>
+              <input type="text" id="input-path" placeholder="PNG, JPEG, GIF, BMP, TIFF, WebP, PNM…" spellcheck="false" aria-label="Input file path" />
+
+              <div class="opt-label-cell" data-help="Where Run writes the SVG. Live preview never writes this file.">
+                <button class="label-button" id="pick-output">output file</button>
+              </div>
+              <span class="size" id="output-size"></span>
+              <input type="text" id="output-path" placeholder="Written when you press Run" spellcheck="false" aria-label="Output file path" />
+            </div>
+            <div class="grid options" id="options"></div>
+            <div class="presets">
+              <button id="preset-save">Save settings</button>
+              <label for="preset-load">Load:</label>
+              <select id="preset-load"></select>
+              <button id="preset-delete">Delete settings</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="group" id="threshold-group">
+            <legend>Brightness threshold</legend>
+            <div class="histogram" id="histogram" aria-hidden="true"></div>
+            <p class="hint histogram-info" id="histogram-info"></p>
+            <div class="threshold">
+              <input type="number" id="threshold-num" min="0" max="100" step="1" aria-label="Brightness threshold" />
+              <input type="range" id="threshold-range" min="0" max="100" step="1" tabindex="-1" aria-label="Brightness threshold slider" />
+            </div>
+            <p class="hint" id="threshold-hint"></p>
+          </fieldset>
+
+          <div class="run-row">
+            <button class="primary" id="run" aria-keyshortcuts="Meta+Enter">Run</button>
+            <label class="switch"><input type="checkbox" id="live" checked /> Live preview</label>
+            <label class="switch"><input type="checkbox" id="overlay" /> Overlay original</label>
+            <span class="spinner" id="spinner" hidden aria-label="Tracing"></span>
+          </div>
+          <details class="command" id="command-box" hidden>
+            <summary>Command</summary>
+            <div class="command-body">
+              <code id="command"></code>
+              <button class="copy" id="command-copy" aria-label="Copy command"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-1a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h1"/></svg></button>
+            </div>
+          </details>
+        </div>
+
+        <section class="programs" id="programs-panel" hidden></section>
+      </aside>
+    </div>
+
+    <dialog id="source-dialog">
+      <header>
+        <strong id="source-title">SVG source</strong>
+        <span>
+          <button id="source-copy">Copy</button>
+          <button id="source-close">Close</button>
+        </span>
+      </header>
+      <pre id="source-text"></pre>
+    </dialog>
+
+    <dialog id="preset-dialog">
+      <form method="dialog">
+        <label for="preset-name">Save these settings as</label>
+        <input id="preset-name" required autocomplete="off" />
+        <menu>
+          <button value="cancel" formnovalidate>Cancel</button>
+          <button value="save" class="primary">Save</button>
+        </menu>
+      </form>
+    </dialog>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "engine": "autotrace",
+  "label": "AutoTrace",
+  "description": "for converting color images",
+  "threshold": false,
+  "options": [
+    {"flag": "background-color", "label": "background color", "kind": "color", "default": "FFFFFF", "optional": true, "enabled": true, "help": "Color treated as background: no paths are drawn in it."},
+    {"flag": "centerline", "label": "centerline", "kind": "bool", "optional": true, "enabled": false, "help": "Trace each region's centerline instead of its outline."},
+    {"flag": "preserve-width", "label": "preserve width", "kind": "bool", "optional": true, "enabled": false, "help": "Keep the line width when tracing centerlines."},
+    {"flag": "remove-adjacent-corners", "label": "remove adjacent corners", "kind": "bool", "optional": true, "enabled": false, "help": "Drop corners that are next to each other."},
+    {"flag": "color-count", "label": "color count", "kind": "number", "default": 256, "min": 2, "max": 256, "step": 1, "integer": true, "optional": true, "enabled": false, "help": "Reduce a color image to this many colors before tracing."},
+    {"flag": "corner-always-threshold", "label": "corner always threshold", "kind": "number", "default": 60, "min": 2, "max": 180, "step": 2, "integer": true, "help": "Angles sharper than this are always corners, even close to another corner."},
+    {"flag": "corner-surround", "label": "corner surround", "kind": "number", "default": 4, "min": 1, "max": 16, "step": 1, "integer": true, "help": "Pixels on each side of a point used to decide if it's a corner."},
+    {"flag": "corner-threshold", "label": "corner threshold", "kind": "number", "default": 100, "min": 2, "max": 180, "step": 2, "integer": true, "help": "Where pixels meet at an angle smaller than this, it's a corner."},
+    {"flag": "despeckle-level", "label": "despeckle level", "kind": "number", "default": 10, "min": 0, "max": 20, "step": 1, "integer": true, "optional": true, "enabled": true, "help": "How large the speckles removed before tracing can be."},
+    {"flag": "despeckle-tightness", "label": "despeckle tightness", "kind": "number", "default": 2, "min": 0, "max": 8, "step": 0.1, "integer": false, "optional": true, "enabled": true, "help": "How tightly despeckling is applied."},
+    {"flag": "error-threshold", "label": "error threshold", "kind": "number", "default": 2, "min": 0.1, "max": 10, "step": 0.1, "integer": false, "help": "Split a fitted curve when it's off by more pixels than this."},
+    {"flag": "filter-iterations", "label": "filter iterations", "kind": "number", "default": 4, "min": 0, "max": 16, "step": 1, "integer": true, "help": "How many times the outline is smoothed before fitting curves."},
+    {"flag": "line-reversion-threshold", "label": "line reversion threshold", "kind": "number", "default": 0.01, "min": 0.01, "max": 0.16, "step": 0.01, "integer": false, "help": "Keep nearly straight curves as straight lines, weighted by curve length."},
+    {"flag": "line-threshold", "label": "line threshold", "kind": "number", "default": 1, "min": 1, "max": 20, "step": 1, "integer": false, "help": "Use a straight line when a curve stays within this many pixels of it."},
+    {"flag": "tangent-surround", "label": "tangent surround", "kind": "number", "default": 3, "min": 1, "max": 16, "step": 1, "integer": true, "help": "Points on each side of a point used to compute its tangent."}
+  ]
+}

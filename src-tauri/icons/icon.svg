@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- taurineate: a bull's head drawn as a traced vector outline, with anchor nodes and one bezier handle -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cf5a33"/>
+      <stop offset="1" stop-color="#8e321d"/>
+    </linearGradient>
+  </defs>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/>
+
+  <g fill="none" stroke="#fbf1e3" stroke-width="30" stroke-linejoin="round" stroke-linecap="round">
+    <!-- horns -->
+    <path d="M372 372 C270 372 214 322 216 236 C262 300 324 322 404 326"/>
+    <path d="M652 372 C754 372 810 322 808 236 C762 300 700 322 620 326"/>
+    <!-- ears -->
+    <path d="M356 420 C304 410 262 438 246 478 C298 494 342 484 362 462"/>
+    <path d="M668 420 C720 410 762 438 778 478 C726 494 682 484 662 462"/>
+    <!-- head -->
+    <path d="M404 340 L620 340 C664 340 690 372 684 418 L656 640 C700 684 688 790 600 800 L424 800 C336 790 324 684 368 640 L340 418 C334 372 360 340 404 340 Z"/>
+    <!-- muzzle -->
+    <path d="M392 676 C452 652 572 652 632 676"/>
+  </g>
+  <g fill="#fbf1e3">
+    <circle cx="446" cy="520" r="22"/>
+    <circle cx="578" cy="520" r="22"/>
+    <circle cx="466" cy="738" r="18"/>
+    <circle cx="558" cy="738" r="18"/>
+  </g>
+
+  <!-- bezier handle on the left horn tip -->
+  <g stroke="#ffd9a8" stroke-width="10">
+    <line x1="216" y1="236" x2="262" y2="300"/>
+  </g>
+  <circle cx="262" cy="300" r="15" fill="#8e321d" stroke="#ffd9a8" stroke-width="9"/>
+
+  <!-- anchor nodes -->
+  <g fill="#8e321d" stroke="#ffd9a8" stroke-width="9">
+    <rect x="196" y="216" width="40" height="40"/>
+    <rect x="788" y="216" width="40" height="40"/>
+    <rect x="384" y="320" width="40" height="40"/>
+    <rect x="600" y="320" width="40" height="40"/>
+    <rect x="348" y="620" width="40" height="40"/>
+    <rect x="636" y="620" width="40" height="40"/>
+    <rect x="404" y="780" width="40" height="40"/>
+    <rect x="580" y="780" width="40" height="40"/>
+  </g>
+</svg>
