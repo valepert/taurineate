@@ -9,7 +9,8 @@ taurineate is a native macOS/Linux app (Tauri 2) inspired by [Delineate](http://
 ## Commands
 
 - Dev: `npm install && npm run tauri dev` (an `.npmrc` sets `legacy-peer-deps` because npm 10 crashes resolving Vite 8's peer deps). `npm run dev` starts only Vite, which can't reach the Tauri backend.
-- Bundle: `npm run tauri build`
+- Bundle: `npm run tauri build`. macOS bundles are ad-hoc signed (`bundle.macOS.signingIdentity: "-"`); there is no Developer ID, so no notarization.
+- Release: pushing a `v*` tag runs `.github/workflows/release.yml` (tauri-action, universal `.dmg`, draft GitHub Release). Bump the version in `package.json`, `src-tauri/Cargo.toml` and `src-tauri/tauri.conf.json` first.
 - Rust tests: `cd src-tauri && cargo test`; a single test: `cargo test pbm_header_and_bits`. `trace::tests::traces_with_installed_binaries` runs the real tracers and skips missing ones.
 - Type-check the frontend: `npx tsc --noEmit`
 

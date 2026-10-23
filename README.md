@@ -1,6 +1,6 @@
 🐂 *taurineate* - a [Tauri](https://tauri.app) app in the spirit of [Delineate](http://delineate.sourceforge.net)
 
-💧 Just launch `npm install && npm run tauri dev`
+💧 On a Mac, download the `.dmg` from [Releases](https://github.com/valepert/taurineate/releases/latest)
 
 A native (macOS and Linux) prototype that converts raster images to SVG with [potrace](https://potrace.sourceforge.net) or [AutoTrace](https://github.com/autotrace/autotrace), keeping Delineate's workflow: engine tabs, a settings panel generated from each tracer's options, Current and Previous results side by side, and saved settings. The tracers stay separate programs that taurineate runs; nothing is linked in.
 
@@ -14,12 +14,17 @@ What's new compared with Delineate:
 * Any common image format (PNG, JPEG, GIF, BMP, TIFF, WebP, PNM), and drag-and-drop.
 * Settings and presets are stored in the app config directory, not `./settings`.
 
-## Requirements
+## Install
 
-* Rust (via [rustup](https://rustup.rs)) and Node.js 20+
-* potrace and AutoTrace
-  * macOS: `brew install potrace autotrace`
-  * Debian/Ubuntu: `sudo apt install potrace autotrace` plus Tauri's [Linux prerequisites](https://tauri.app/start/prerequisites/#linux) (`libwebkit2gtk-4.1-dev` and friends)
+On macOS (Apple Silicon or Intel):
+
+1. Download the `.dmg` from [Releases](https://github.com/valepert/taurineate/releases/latest), open it and drag taurineate to Applications.
+2. Install the tracers: `brew install potrace autotrace`
+3. The app isn't notarized, so macOS blocks the first launch: open **System Settings → Privacy & Security** and click **Open Anyway**.
+
+On Linux, build it from source (below).
+
+## Finding the tracers
 
 The **Programs** tab shows which program each tracer uses and where it was found; a ⚠ on that tab means a program is missing, and **Search again** picks up a newly installed program without restarting. taurineate searches, in order:
 
@@ -31,11 +36,22 @@ The **Programs** tab shows which program each tracer uses and where it was found
 
 A candidate is used only if `--version` runs and names the right program. A chosen path or variable that stops working is skipped with a warning.
 
-## Commands
+## Building from source
+
+Requirements:
+
+* Rust (via [rustup](https://rustup.rs)) and Node.js 20+
+* potrace and AutoTrace
+  * macOS: `brew install potrace autotrace`
+  * Debian/Ubuntu: `sudo apt install potrace autotrace` plus Tauri's [Linux prerequisites](https://tauri.app/start/prerequisites/#linux) (`libwebkit2gtk-4.1-dev` and friends)
+
+Commands (after `npm install`):
 
 * `npm run tauri dev`: run in development mode
 * `npm run tauri build`: build the app bundle (`.app`/`.dmg` on macOS, AppImage/`.deb` on Linux)
 * `cd src-tauri && cargo test`: Rust unit tests; the end-to-end trace test runs the installed potrace and autotrace, and skips any that are missing
+
+Pushing a version tag (`git tag v0.2.0 && git push --tags`) runs `.github/workflows/release.yml`, which builds a universal macOS `.dmg` and attaches it to a draft release.
 
 ## How it works
 
